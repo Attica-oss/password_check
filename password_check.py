@@ -2,21 +2,9 @@
 
 import requests
 import hashlib
-import sys
 import csv
 
 def request_api_data(query_char):
-    """_summary_
-
-    Args:
-        query_char (_type_): _description_
-
-    Raises:
-        RuntimeError: _description_
-
-    Returns:
-        _type_: _description_
-    """
 
     url = 'https://api.pwnedpasswords.com/range/' + query_char
     res = requests.get(url)
@@ -35,13 +23,7 @@ def get_password_leak_count(hashes,hash_to_check):
     return 0
 
 def pwned_api_check(password):
-    """_check if the password is in the response data_
-
-    Args:
-        password (_type_): _description_
-
-    Returns:
-        _type_: Gets the count of leaks (if available)
+    """_check if the password is in the response data
     """
 
     passwordsha1 = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
@@ -63,7 +45,6 @@ def open_csv(filename):
         for row in reader:
             passwords.append(row[1])
         return passwords
-# open_csv('password.csv') 
 
 def main(file):
     passwords = open_csv(file)
