@@ -1,10 +1,10 @@
 ''' Application to check if Password have been Pwned!'''
-
 import requests
 import hashlib
 import csv
 
-def request_api_data(query_char):
+def request_api_data(query_char:str)->int:
+    """Request the api data from pwned password website"""
 
     url = 'https://api.pwnedpasswords.com/range/' + query_char
     res = requests.get(url)
